@@ -8,4 +8,8 @@ export default defineConfig({
   site: 'https://elherbariobotanico.com',
   base: '/',
   trailingSlash: 'always',
+  // «Nuestra historia» pasó a llamarse «Detrás de El Herbario» el 2026-10-29.
+  redirects: {
+    '/nuestra-historia/': '/detras-de-el-herbario/',
+  },
 });

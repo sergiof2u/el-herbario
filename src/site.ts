@@ -33,7 +33,7 @@ export function pesos(valor: number) {
 export const menu = [
   { href: 'tienda/', texto: 'Tienda' },
   { href: 'arma-tu-jardin/', texto: 'Arma tu jardín' },
-  { href: 'nuestra-historia/', texto: 'Nuestra historia' },
+  { href: 'detras-de-el-herbario/', texto: 'Detrás de El Herbario' },
   { href: 'contacto/', texto: 'Contacto' },
   { href: 'manifiesto/', texto: 'Manifiesto' },
 ];

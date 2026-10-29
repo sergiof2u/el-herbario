@@ -38,8 +38,8 @@ Las fotos se muestran con la luz del archivo: sin velos, degradados, `opacity` n
 
 ## Redacción
 
-- Tuteo y plural de la marca («creamos», «nuestra»). La historia va en tercera persona,
-  con Daniela como protagonista.
+- Tuteo y plural de la marca («creamos», «nuestra»). La página «Detrás de El Herbario»
+  va en primera persona, con la voz de Daniela (cambio pedido por ella el 2026-10-29).
 - Nada de superlativos de venta. Nunca la construcción «no es X, sino Y».
 
 ## Dominio y despliegue

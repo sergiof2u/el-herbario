@@ -122,7 +122,7 @@ p { margin: 0 0 1em; text-wrap: pretty; }
 }
 
 .menu-movil { display: none; }
-@media (max-width: 860px) {
+@media (max-width: 940px) {
   .menu { display: none; }
   /* En el celular: nombre a la izquierda; Mi jardín y el botón de menú a la derecha. */
   .cabecera__acciones { gap: .6rem; }
