@@ -1,0 +1,35 @@
+---
+import type { Categoria } from '../productos';
+import { ruta } from '../site';
+import ProductoCard from './ProductoCard.astro';
+
+interface Props { categoria: Categoria; nivel?: 'h2' | 'h3' }
+const { categoria: c, nivel = 'h2' } = Astro.props;
+const Titulo = nivel;
+---
+<div class="categoria" id={c.id}>
+  {c.foto ? (
+    <div class="categoria__cabeza">
+      <div>
+        <Titulo>{c.nombre}</Titulo>
+        <p class="intro">{c.intro}</p>
+      </div>
+      <img src={ruta(c.foto.src)} alt={c.foto.alt} loading="lazy" width="800" height="600" />
+    </div>
+  ) : (
+    <div style="margin-bottom:2rem">
+      <Titulo>{c.nombre}</Titulo>
+      <p class="intro">{c.intro}</p>
+    </div>
+  )}
+  <div class="productos">
+    {c.productos.map((p) => <ProductoCard producto={p} />)}
+  </div>
+  {c.ritual && (
+    <div class="ritual">
+      <h3>{c.ritual.titulo}</h3>
+      <ol>{c.ritual.pasos.map((paso) => <li>{paso}</li>)}</ol>
+    </div>
+  )}
+  {c.nota && <p class="nota">{c.nota}</p>}
+</div>

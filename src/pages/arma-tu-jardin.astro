@@ -1,0 +1,69 @@
+---
+import Base from '../layouts/Base.astro';
+import Categoria from '../components/Categoria.astro';
+import Perfume from '../components/Perfume.astro';
+import ListaJardin from '../components/ListaJardin.astro';
+import ProductoCard from '../components/ProductoCard.astro';
+import { tisanas, chai, cosmetica } from '../productos';
+
+const pestanas = [
+  { id: 'tisanas', nombre: 'Tisanas' },
+  { id: 'perfumes', nombre: 'Perfumes' },
+  { id: 'cosmetica', nombre: 'Cosmética botánica' },
+];
+---
+<Base titulo="Arma tu jardín" pagina="arma-tu-jardin/" descripcion="Combina tisanas, perfumes y cosmética botánica de El Herbario, para ti o para regalar.">
+  <section class="contenedor" style="padding-block:clamp(2rem,6vw,4rem) 1rem">
+    <p class="etiqueta">Arma tu jardín</p>
+    <h1>Arma tu propio jardín</h1>
+    <p class="intro">Combina tus productos favoritos y crea una composición botánica especialmente pensada, para ti o para regalar.</p>
+  </section>
+
+  <section class="contenedor armar" style="padding-bottom:5rem">
+    <div>
+      <fieldset class="para-quien" data-para-quien>
+        <legend class="etiqueta" style="width:100%">¿Para quién es?</legend>
+        <label class="opcion"><input type="radio" name="para" value="mi" checked /> Para mí</label>
+        <label class="opcion"><input type="radio" name="para" value="regalo" /> Para regalar</label>
+      </fieldset>
+      <div class="regalo" data-regalo hidden>
+        <label class="campo">Para
+          <input type="text" data-campo="para" maxlength="60" autocomplete="off" />
+        </label>
+        <label class="campo">De
+          <input type="text" data-campo="de" maxlength="60" autocomplete="off" />
+        </label>
+        <label class="campo">Mensaje de la tarjeta
+          <textarea data-campo="mensaje" maxlength="280"></textarea>
+        </label>
+      </div>
+
+      <div class="pestanas" role="tablist" aria-label="Categorías">
+        {pestanas.map((p, i) => (
+          <button class="pestana" type="button" role="tab" id={`pestana-${p.id}`} aria-controls={`panel-${p.id}`} aria-selected={i === 0 ? 'true' : 'false'} tabindex={i === 0 ? 0 : -1} data-pestana={p.id}>{p.nombre}</button>
+        ))}
+      </div>
+
+      <div class="panel" id="panel-tisanas" role="tabpanel" aria-labelledby="pestana-tisanas">
+        <Categoria categoria={{ ...tisanas, id: 'a-tisanas', foto: undefined, ritual: undefined, nota: undefined }} nivel="h3" />
+        <h3 class="sub">Chai y especias</h3>
+        <p class="intro" style="margin-bottom:2rem">{chai.intro}</p>
+        <div class="productos">
+          {chai.productos.map((p) => <ProductoCard producto={p} />)}
+        </div>
+      </div>
+      <div class="panel" id="panel-perfumes" role="tabpanel" aria-labelledby="pestana-perfumes" hidden>
+        <Perfume nivel="h3" />
+      </div>
+      <div class="panel" id="panel-cosmetica" role="tabpanel" aria-labelledby="pestana-cosmetica" hidden>
+        <Categoria categoria={{ ...cosmetica, id: 'a-cosmetica' }} nivel="h3" />
+      </div>
+    </div>
+
+    <aside class="composicion" aria-label="Tu composición">
+      <h2>Tu jardín</h2>
+      <ListaJardin compacta />
+    </aside>
+  </section>
+
+</Base>

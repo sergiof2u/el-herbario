@@ -1,0 +1,46 @@
+---
+import { perfume } from '../productos';
+import { ruta, pesos } from '../site';
+
+interface Props { nivel?: 'h2' | 'h3' }
+const { nivel = 'h2' } = Astro.props;
+const Titulo = nivel;
+---
+<div class="categoria" id="perfumes">
+  <Titulo>Perfumes</Titulo>
+  <p class="intro" style="margin-bottom:2rem">Todos nuestros perfumes son personalizados. Eliges una o dos familias aromáticas y preparamos {perfume.nombre} a tu medida.</p>
+  <div class="perfume">
+    <div class="perfume__foto">
+      <img src={ruta(perfume.foto.src)} alt={perfume.foto.alt} loading="lazy" width="600" height="800" />
+      <p class="frase">«{perfume.frase}»</p>
+    </div>
+    <form class="caja" data-perfume>
+      <p class="producto__tipo">{perfume.tipo}</p>
+      <h3>{perfume.nombre}</h3>
+      <p>{perfume.descripcion}</p>
+      <ul class="ficha-perfume">
+        <li><strong>{pesos(perfume.precio)}</strong></li>
+        <li>{perfume.presentacion}</li>
+        <li>Preparación: {perfume.preparacion.toLowerCase()}</li>
+      </ul>
+      <fieldset class="familias">
+        <legend>
+          <span class="h3" style="font-family:var(--serif);font-size:1.3rem">Elige tu familia aromática</span><br />
+          <em style="font-size:.95rem">Cada aroma es un lenguaje. Elige una o dos características que te gusten y crearemos un perfume a tu medida.</em>
+        </legend>
+        {perfume.familias.map((f) => (
+          <label class="familia">
+            <input type="checkbox" name="familia" value={f.nombre} />
+            <span class="familia__nombre">{f.nombre}</span>
+            <span class="familia__caracter">{f.caracter}</span>
+            <span class="familia__desc">{f.descripcion}</span>
+            <span class="familia__notas">Notas de {f.notas}</span>
+          </label>
+        ))}
+      </fieldset>
+      <p style="font-size:.95rem"><em>Puedes combinar tus favoritas para crear un perfume que hable de ti. No hay una combinación correcta: hay aromas que cuentan tu historia.</em></p>
+      <button class="boton" type="submit" data-perfume-boton disabled>Añadir a mi jardín</button>
+      <p class="nota" data-perfume-ayuda style="font-size:.9rem;margin-top:.7rem">Elige al menos una familia.</p>
+    </form>
+  </div>
+</div>

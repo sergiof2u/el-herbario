@@ -1,0 +1,24 @@
+---
+// Lista del jardín, la pinta src/scripts/jardin.ts. Se usa en /mi-jardin/ y en «Arma tu jardín».
+import { ruta } from '../site';
+
+interface Props { compacta?: boolean }
+const { compacta = false } = Astro.props;
+---
+<div data-jardin>
+  <p class="vacio" data-vacio>Tu jardín está esperando. Añade algo que te haga florecer.</p>
+  <div data-lleno hidden>
+    <ul class="lista" data-lista></ul>
+    <div class="totales">
+      <span>Subtotal</span>
+      <strong data-subtotal></strong>
+    </div>
+    <p class="aviso-envio" data-envio></p>
+    <p class="nota" data-resumen-regalo hidden></p>
+    {compacta ? (
+      <a class="boton" href={ruta('mi-jardin/')} style="width:100%">Ver mi jardín</a>
+    ) : (
+      <a class="boton" data-whatsapp href="#" rel="noopener" style="width:100%">Finalizar pedido por WhatsApp</a>
+    )}
+  </div>
+</div>

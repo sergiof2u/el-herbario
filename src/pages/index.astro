@@ -1,0 +1,60 @@
+---
+import Base from '../layouts/Base.astro';
+import { sitio, ruta } from '../site';
+
+const tarjetas = [
+  { id: 'tisanas', nombre: 'Tisanas', texto: 'Flores y hojas para tus pausas, y chai con especias que calientan.', foto: 'fotos/tisana-bolsa.jpg', alt: 'Bolsa de tisana de El Herbario entre flores' },
+  { id: 'perfumes', nombre: 'Perfumes', texto: 'Alma de Jardín, preparado a tu medida con una o dos familias aromáticas.', foto: 'fotos/alma-de-jardin.jpg', alt: 'Frasco del perfume Alma de Jardín envuelto en papel de flores' },
+  { id: 'cosmetica', nombre: 'Cosmética botánica', texto: 'Crema, rubor y jabón hechos a mano para cuidar la piel.', foto: 'fotos/pajara-pinta.jpg', alt: 'Lata del bálsamo rubor La Pájara Pinta con romero y lavanda' },
+];
+---
+<Base>
+  <section class="contenedor portada">
+    <div class="portada__texto">
+      <p class="etiqueta">{sitio.origen}</p>
+      <h1>Un jardín de plantas, aromas y pequeños rituales para la vida cotidiana</h1>
+      <a class="boton" href={ruta('tienda/')}>Explorar El Herbario</a>
+    </div>
+    <div class="portada__foto">
+      <img src={ruta('fotos/manzanilla.jpg')} alt="Flores de manzanilla recién cortadas sobre un fondo rosado" width="1023" height="1537" fetchpriority="high" />
+    </div>
+  </section>
+
+  <section class="seccion seccion--mantequilla">
+    <div class="contenedor">
+      <h2>Arma tu propio jardín</h2>
+      <p class="intro" style="margin-bottom:2rem">Combina tus productos favoritos y crea una composición botánica especialmente pensada, para ti o para regalar.</p>
+      <div class="rejilla-3">
+        {tarjetas.map((t) => (
+          <a class="tarjeta-categoria" href={ruta(`arma-tu-jardin/?p=${t.id}`)}>
+            <img src={ruta(t.foto)} alt={t.alt} loading="lazy" width="600" height="600" />
+            <div>
+              <h3>{t.nombre}</h3>
+              <p>{t.texto}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="contenedor historia">
+      <img src={ruta('fotos/ilustracion-daniela.jpg')} alt="Ilustración de una mujer con un vestido verde de margaritas, con flores naranjas en las manos" loading="lazy" width="711" height="1280" />
+      <div>
+        <p class="etiqueta">Nuestra historia</p>
+        <h2>Un herbario es un jardín que se guarda</h2>
+        <p>En un jardín de Subachoque, Daniela cultiva, seca y procesa cada planta con sus manos. De ellas nacen tisanas, perfumes y cosmética botánica hechos con paciencia, pensados con cuidado, uno a uno.</p>
+        <a class="boton boton--claro" href={ruta('nuestra-historia/')}>Conoce a Daniela</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion seccion--mantequilla">
+    <div class="contenedor" style="text-align:center;max-width:40rem">
+      <h2>Encuéntranos</h2>
+      <p class="intro" style="margin-inline:auto">Estamos en la tienda Suma Subachoque. Y enviamos a todo el país.</p>
+      <a class="boton" href={ruta('contacto/')}>Escríbenos</a>
+    </div>
+  </section>
+</Base>

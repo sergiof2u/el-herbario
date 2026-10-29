@@ -1,0 +1,40 @@
+---
+import type { Producto } from '../productos';
+import { ruta, pesos } from '../site';
+import Cantidad from './Cantidad.astro';
+
+interface Props { producto: Producto }
+const { producto: p } = Astro.props;
+---
+<article class="producto" id={p.id}>
+  {p.foto ? (
+    <img class="producto__foto" src={ruta(p.foto.src)} alt={p.foto.alt} loading="lazy" width="600" height="600" />
+  ) : (
+    <div class="producto__adorno" aria-hidden="true">
+      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+        <path d="M24 44V16" />
+        <path d="M24 30c-6-1-10-5-11-11 6 0 10 4 11 11Z" />
+        <path d="M24 24c6-1 10-5 11-11-6 0-10 4-11 11Z" />
+        <circle cx="24" cy="10" r="4" />
+      </svg>
+    </div>
+  )}
+  <div class="producto__cuerpo">
+    {p.tipo && <p class="producto__tipo">{p.tipo}</p>}
+    <h3>{p.nombre}</h3>
+    <p class="producto__desc">{p.descripcion}</p>
+    {p.ingredientes && (
+      <p class="producto__ing"><strong>Ingredientes:</strong> {p.ingredientes.join(', ')}</p>
+    )}
+    <div class="producto__pie">
+      <div class="producto__precio">
+        <strong>{pesos(p.precio)}</strong>
+        <span>{p.presentacion}</span>
+      </div>
+      <div class="comprar">
+        <Cantidad />
+        <button class="boton" type="button" data-anadir={p.id}>Añadir a mi jardín</button>
+      </div>
+    </div>
+  </div>
+</article>

@@ -1,0 +1,112 @@
+---
+import '../styles/global.css';
+import { sitio, menu, ruta, instagramUrl, whatsappUrl } from '../site';
+
+interface Props {
+  titulo?: string;
+  descripcion?: string;
+  pagina?: string;
+}
+
+const { titulo, descripcion = 'Tisanas, chai, perfumes y cosmética botánica hechos a mano en un jardín de Subachoque.', pagina = '' } = Astro.props;
+const tituloCompleto = titulo ? `${titulo} · ${sitio.nombre}` : `${sitio.nombre} · ${sitio.lema}`;
+const imagenCompartir = new URL(ruta('fotos/sello.jpg'), Astro.site).href;
+---
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{tituloCompleto}</title>
+    <meta name="description" content={descripcion} />
+    <meta property="og:title" content={tituloCompleto} />
+    <meta property="og:description" content={descripcion} />
+    <meta property="og:image" content={imagenCompartir} />
+    <meta property="og:locale" content="es_CO" />
+    <meta name="theme-color" content="#F5E1DF" />
+    <link rel="icon" href={ruta('favicon.png')} type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Jost:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  </head>
+  <body data-base={ruta()}>
+    <header class="cabecera">
+      <div class="contenedor cabecera__fila">
+        <a class="marca" href={ruta()}>
+          <img src={ruta('fotos/sello.jpg')} alt="" width="48" height="48" />
+          <span>
+            <span class="marca__nombre">{sitio.nombre}</span>
+            <span class="marca__lema">{sitio.lema}</span>
+          </span>
+        </a>
+        <div class="cabecera__acciones">
+          <nav aria-label="Principal">
+            <ul class="menu" style="list-style:none;margin:0;padding:0">
+              {menu.map((m) => (
+                <li><a href={ruta(m.href)} aria-current={pagina === m.href ? 'page' : undefined}>{m.texto}</a></li>
+              ))}
+            </ul>
+            <details class="menu-movil">
+              <summary aria-label="Abrir menú">Menú</summary>
+              <ul class="menu" style="list-style:none;margin:0;padding:0">
+                <li><a href={ruta()}>Inicio</a></li>
+                {menu.map((m) => (
+                  <li><a href={ruta(m.href)} aria-current={pagina === m.href ? 'page' : undefined}>{m.texto}</a></li>
+                ))}
+              </ul>
+            </details>
+          </nav>
+          <a class="mi-jardin-enlace" href={ruta('mi-jardin/')} aria-current={pagina === 'mi-jardin/' ? 'page' : undefined}>
+            Mi jardín <span class="contador" data-contador aria-label="productos en tu jardín">0</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="pie">
+      <div class="contenedor">
+        <div class="pie__rejilla">
+          <div>
+            <h2>{sitio.nombre}</h2>
+            <p class="etiqueta" style="margin-top:.4rem">{sitio.lema}</p>
+            <p><em>{sitio.origen}</em></p>
+          </div>
+          <div>
+            <p class="etiqueta">El jardín</p>
+            <ul>
+              <li><a href={ruta('tienda/#tisanas')}>Tisanas</a></li>
+              <li><a href={ruta('tienda/#chai')}>Chai y especias</a></li>
+              <li><a href={ruta('tienda/#perfumes')}>Perfumes</a></li>
+              <li><a href={ruta('tienda/#cosmetica')}>Cosmética botánica</a></li>
+              <li><a href={ruta('nuestra-historia/')}>Nuestra historia</a></li>
+              <li><a href={ruta('contacto/')}>Contacto</a></li>
+            </ul>
+          </div>
+          <div>
+            <p class="etiqueta">Contacto</p>
+            <ul>
+              <li><a href={instagramUrl} rel="noopener">Instagram @{sitio.instagram}</a></li>
+              <li><a href={whatsappUrl()} rel="noopener">WhatsApp {sitio.whatsappVisible}</a></li>
+            </ul>
+            <p class="etiqueta" style="margin-top:1.4rem">Envíos y puntos de venta</p>
+            <ul>
+              <li>Envíos a todo el país</li>
+              <li>{sitio.puntoDeVenta}</li>
+            </ul>
+          </div>
+        </div>
+        <p class="pie__derechos">© 2026 {sitio.nombre}</p>
+      </div>
+    </footer>
+
+    <div class="aviso" data-aviso role="status" aria-live="polite"></div>
+
+    <script>
+      import '../scripts/jardin';
+    </script>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+---
+import Base from '../layouts/Base.astro';
+import { ruta } from '../site';
+---
+<Base titulo="Nuestra historia" pagina="nuestra-historia/" descripcion="Daniela y el jardín de Subachoque donde nace El Herbario.">
+  <section class="seccion">
+    <div class="contenedor historia">
+      <img src={ruta('fotos/ilustracion-daniela.jpg')} alt="Ilustración de una mujer con un vestido verde de margaritas, con flores naranjas en las manos y hojas al viento" width="711" height="1280" />
+      <div>
+        <p class="etiqueta">Nuestra historia</p>
+        <h1>Un herbario es un jardín que se guarda</h1>
+        <p>Detrás de este jardín está Daniela: diseñadora, ilustradora y jardinera. Hace seis años empezó a recorrer el mundo de la herbolaria, y El Herbario es el lugar donde reúne lo que ha ido encontrando, como quien prensa una flor entre las páginas de un libro.</p>
+        <p>En un jardín de Subachoque cultiva, seca y procesa cada planta con sus manos. De ellas nacen tisanas, perfumes y cosmética botánica hechos con paciencia, pensados con cuidado, uno a uno.</p>
+        <p>Lo que más ama de este oficio es que las plantas, igual que ella, quieren añadir belleza y color al mundo.</p>
+        <p class="etiqueta" style="margin-top:2rem">Oficios botánicos</p>
+      </div>
+    </div>
+  </section>
+  <section class="seccion seccion--mantequilla">
+    <div class="contenedor" style="text-align:center;max-width:40rem">
+      <img src={ruta('fotos/sello.jpg')} alt="Sello de El Herbario: cacao, azucena y caléndula grabados, con la leyenda «De un jardín de Subachoque»" width="320" height="320" loading="lazy" style="width:min(18rem,70%);margin:0 auto 2rem;border-radius:50%" />
+      <a class="boton" href={ruta('tienda/')}>Explorar El Herbario</a>
+    </div>
+  </section>
+</Base>

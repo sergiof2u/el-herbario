@@ -1,0 +1,25 @@
+---
+import Base from '../layouts/Base.astro';
+import ListaJardin from '../components/ListaJardin.astro';
+import { ruta, sitio, pesos } from '../site';
+---
+<Base titulo="Mi jardín" pagina="mi-jardin/" descripcion="Tu pedido en El Herbario.">
+  <section class="seccion">
+    <div class="contenedor carrito">
+      <div>
+        <p class="etiqueta">Mi jardín</p>
+        <h1>Tu pedido</h1>
+        <div class="caja">
+          <ListaJardin />
+        </div>
+        <p style="margin-top:1.2rem"><a href={ruta('tienda/')}>Seguir explorando la tienda</a></p>
+      </div>
+      <aside class="caja" style="background:var(--mantequilla);border:0">
+        <h2 style="font-size:1.6rem">Envíos y pagos</h2>
+        <p><strong>Envíos a todo el país.</strong> Tu pedido viaja con cuidado hasta ti. El envío va incluido en compras desde {pesos(sitio.envioGratisDesde)}.</p>
+        <p><strong>Medios de pago:</strong> {sitio.mediosDePago}.</p>
+        <p style="margin:0">Al finalizar, se abre WhatsApp con tu pedido escrito. Lo envías y te confirmamos el pago y el envío.</p>
+      </aside>
+    </div>
+  </section>
+</Base>
