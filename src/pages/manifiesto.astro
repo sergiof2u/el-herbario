@@ -1,0 +1,19 @@
+---
+import Base from '../layouts/Base.astro';
+import { ruta } from '../site';
+// Texto de Daniela (2026-10-29), tal como lo escribió.
+---
+<Base titulo="Manifiesto" pagina="manifiesto/" descripcion="El manifiesto de El Herbario: un pequeño taller de jardines en Subachoque.">
+  <section class="seccion">
+    <div class="contenedor manifiesto">
+      <p class="etiqueta">Manifiesto</p>
+      <p>Con el herbario he notado como cada planta tiene su propia manera de encontrarnos.</p>
+      <p>Hoy, más que un taller de plantas, el herbario se ha transformado en un pequeño taller de jardines. Un lugar donde las flores, las hojas, las raíces y los aromas se transforman en tisanas, cosmética botánica, perfumes y pequeños rituales para la vida cotidiana.</p>
+      <p>Últimamente de aquí nacen Jardines que caben en una bolsa, pero contienen todo un universo. Algunos guardan pomadas con plantas medicinales, otros, aromas que nos devuelven a un recuerdo, sabores que nos reconfortan o preparaciones que nos invitan a cuidar de nosotros mismos.</p>
+      <p>Cada jardín ha nacido de una conversación, de una intención, de una manera particular de habitar el mundo.</p>
+      <p>Porque así como no hay dos flores iguales, tampoco hay dos personas que necesiten exactamente el mismo jardín.</p>
+      <p class="manifiesto__cierre">Y tú, ¿qué jardín llevarías contigo?</p>
+      <a class="boton" href={ruta('arma-tu-jardin/')}>Arma tu jardín</a>
+    </div>
+  </section>
+</Base>

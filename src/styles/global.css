@@ -371,4 +371,12 @@ p { margin: 0 0 1em; text-wrap: pretty; }
 .pie .etiqueta { color: var(--pistacho); }
 .pie__derechos { margin-top: 2.5rem; padding-top: 1.2rem; border-top: 1px solid rgb(245 225 223 / .25); font-size: .85rem; }
 
+/* Manifiesto */
+.manifiesto { max-width: 40rem; }
+.manifiesto p:not(.etiqueta) { font-family: var(--serif); font-size: clamp(1.25rem, 2.6vw, 1.55rem); line-height: 1.5; margin-bottom: 1.2em; }
+.manifiesto .manifiesto__cierre {
+  font-size: clamp(1.6rem, 4vw, 2.2rem); line-height: 1.25;
+  margin: 2rem 0; padding: 1.6rem 1.8rem; background: var(--mantequilla); border-radius: var(--radio);
+}
+
 .pendiente { border: 2px dashed var(--bosque); border-radius: var(--radio); padding: 1.5rem; background: var(--mantequilla); }

@@ -35,5 +35,5 @@ export const menu = [
   { href: 'arma-tu-jardin/', texto: 'Arma tu jardín' },
   { href: 'nuestra-historia/', texto: 'Nuestra historia' },
   { href: 'contacto/', texto: 'Contacto' },
-  // Manifiesto: vuelve cuando llegue el texto (src/pages/_manifiesto.astro → manifiesto.astro).
+  { href: 'manifiesto/', texto: 'Manifiesto' },
 ];

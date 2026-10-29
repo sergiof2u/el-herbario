@@ -2,10 +2,10 @@
 import Base from '../layouts/Base.astro';
 import Categoria from '../components/Categoria.astro';
 import Perfume from '../components/Perfume.astro';
-import { tisanas, chai, cosmetica } from '../productos';
+import { tisanas, chai, cosmetica, kits } from '../productos';
 import { ruta, sitio, pesos } from '../site';
 ---
-<Base titulo="Tienda" pagina="tienda/" descripcion="Tisanas, chai y especias, perfumes personalizados y cosmética botánica de El Herbario. Envíos a todo el país.">
+<Base titulo="Tienda" pagina="tienda/" descripcion="Tisanas, chai y especias, perfumes personalizados, cosmética botánica y kits de El Herbario. Envíos a todo el país.">
   <section class="contenedor" style="padding-block:clamp(2rem,6vw,4rem) 1rem">
     <p class="etiqueta">Tienda</p>
     <h1>Lo que crece en el jardín</h1>
@@ -15,6 +15,7 @@ import { ruta, sitio, pesos } from '../site';
       <a href="#chai">Chai y especias</a>
       <a href="#perfumes">Perfumes</a>
       <a href="#cosmetica">Cosmética botánica</a>
+      <a href="#kits">Kits</a>
     </nav>
   </section>
 
@@ -22,8 +23,9 @@ import { ruta, sitio, pesos } from '../site';
   <section class="seccion seccion--mantequilla"><div class="contenedor"><Categoria categoria={chai} /></div></section>
   <section class="seccion"><div class="contenedor"><Perfume /></div></section>
   <section class="seccion seccion--mantequilla"><div class="contenedor"><Categoria categoria={cosmetica} /></div></section>
+  <section class="seccion"><div class="contenedor"><Categoria categoria={kits} /></div></section>
 
-  <section class="seccion">
+  <section class="seccion seccion--mantequilla">
     <div class="contenedor" style="text-align:center;max-width:40rem">
       <h2>¿Quieres regalar?</h2>
       <p class="intro" style="margin-inline:auto">Arma un jardín para alguien más y añade el mensaje de la tarjeta.</p>

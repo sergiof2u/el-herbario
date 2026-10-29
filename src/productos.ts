@@ -10,6 +10,8 @@ export type Producto = {
   precio: number;
   descripcion: string;
   ingredientes?: string[];
+  contiene?: string[];
+  modoDeUso?: string;
   foto?: { src: string; alt: string };
 };
 
@@ -120,7 +122,6 @@ export const cosmetica: Categoria = {
       precio: 60000,
       descripcion: 'Hidrata y nutre profundamente. Una crema hecha a mano con manteca de copoazú y extracto de caléndula y azucena.',
       ingredientes: ['manteca de copoazú', 'extracto de caléndula y azucena'],
-      foto: { src: 'fotos/cosmetiquera.jpg', alt: 'Cosmetiquera de tela con el sello de El Herbario, la crema facial de copoazú y un roll-on, sobre una mesa de madera' },
     },
     {
       id: 'la-pajara-pinta',
@@ -130,6 +131,7 @@ export const cosmetica: Categoria = {
       precio: 45000,
       descripcion: 'Color para tus mejillas, sobre una base de oleato de flores de rosa, romero y lavanda, con manteca de copoazú y cera de abeja.',
       ingredientes: ['oleato de flores (rosa, romero, lavanda)', 'manteca de copoazú', 'cera de abeja', 'pigmentos minerales (óxido de hierro)'],
+      modoDeUso: 'Úsala sobre tus labios y mejillas para aprovechar sus cualidades humectantes mientras te brinda un toque de color.',
       foto: { src: 'fotos/pajara-pinta.jpg', alt: 'Lata rosada del bálsamo rubor La Pájara Pinta junto a romero, lavanda y pétalos de rosa' },
     },
     {
@@ -140,6 +142,44 @@ export const cosmetica: Categoria = {
       descripcion: 'Un jabón de glicerina con flores de lavanda y aceites esenciales, para un baño tranquilo.',
       ingredientes: ['glicerina', 'flores de lavanda', 'aceites esenciales'],
       foto: { src: 'fotos/jabon-lavanda.jpg', alt: 'Dos barras de jabón con flores de lavanda junto a su etiqueta redonda' },
+    },
+  ],
+};
+
+// Kits: respuesta de Daniela del 2026-10-29.
+export const kits: Categoria = {
+  id: 'kits',
+  nombre: 'Kits',
+  intro: 'Jardines que caben en una bolsa, pero contienen todo un universo.',
+  productos: [
+    {
+      id: 'kit-jardin-nocturno',
+      nombre: 'Jardín nocturno',
+      tipo: 'Kit',
+      presentacion: 'Kit',
+      precio: 90000,
+      descripcion: 'En este jardín encontrarás el poder de plantas como toronjil, manzanilla, lavanda, geranio y clitoria, y aceites como el neroli y el incienso, para crear diferentes productos para el bienestar y el descanso.',
+      contiene: ['tisana Jardín nocturno', 'roll-on Jardín nocturno', 'pomada para pies', 'infusor de acero inoxidable'],
+      foto: { src: 'fotos/roll-on-jardin-nocturno.jpg', alt: 'Roll-on Jardín nocturno de El Herbario entre lavanda y flores de azahar' },
+    },
+    {
+      id: 'kit-jardin-en-calma',
+      nombre: 'Jardín en calma',
+      tipo: 'Kit',
+      presentacion: 'Kit',
+      precio: 80000,
+      descripcion: 'En este jardín encontrarás el poder de plantas como lavanda, manzanilla y hierbabuena, y aceites esenciales de geranio, lavanda e incienso.',
+      contiene: ['tisana Jardín en calma', 'roll-on Calma a la mano', 'infusor de acero inoxidable'],
+    },
+    {
+      id: 'kit-jardin-para-volver-a-ti',
+      nombre: 'Jardín para volver a ti',
+      tipo: 'Kit',
+      presentacion: 'Kit',
+      precio: 120000,
+      descripcion: 'Este es un kit de cuidado personal, una caricia para nuestra piel y sentidos.',
+      contiene: ['crema facial de copoazú', 'roll-on Calma a la mano', 'cosmetiquera'],
+      foto: { src: 'fotos/cosmetiquera.jpg', alt: 'Cosmetiquera de tela con el sello de El Herbario y la etiqueta «Jardín para volver a ti», con la crema facial de copoazú y el roll-on Calma a la mano' },
     },
   ],
 };
@@ -167,7 +207,7 @@ export const perfume = {
 
 /** Todo lo que se puede añadir al carrito, por id, para el script del carrito. */
 export const catalogo = Object.fromEntries(
-  [...tisanas.productos, ...chai.productos, ...cosmetica.productos, perfume].map((p) => [
+  [...tisanas.productos, ...chai.productos, ...cosmetica.productos, ...kits.productos, perfume].map((p) => [
     p.id,
     { nombre: p.nombre, precio: p.precio, presentacion: p.presentacion },
   ]),

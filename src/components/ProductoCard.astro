@@ -23,8 +23,14 @@ const { producto: p } = Astro.props;
     {p.tipo && <p class="producto__tipo">{p.tipo}</p>}
     <h3>{p.nombre}</h3>
     <p class="producto__desc">{p.descripcion}</p>
+    {p.contiene && (
+      <p class="producto__ing"><strong>Contiene:</strong> {p.contiene.join(', ')}</p>
+    )}
     {p.ingredientes && (
       <p class="producto__ing"><strong>Ingredientes:</strong> {p.ingredientes.join(', ')}</p>
+    )}
+    {p.modoDeUso && (
+      <p class="producto__ing"><strong>Modo de uso:</strong> {p.modoDeUso}</p>
     )}
     <div class="producto__pie">
       <div class="producto__precio">
