@@ -42,6 +42,13 @@ Las fotos se muestran con la luz del archivo: sin velos, degradados, `opacity` n
   con Daniela como protagonista.
 - Nada de superlativos de venta. Nunca la construcción «no es X, sino Y».
 
+## Dominio y despliegue
+
+Repositorio: `github.com/sergiof2u/el-herbario`. Dominio: `elherbariobotanico.com`, en
+Namecheap (cuatro registros A de GitHub Pages en `@` y CNAME `www` → `sergiof2u.github.io`).
+`git push` a `main` dispara GitHub Actions (`.github/workflows/deploy.yml`), que compila y
+publica en GitHub Pages.
+
 ## Rutas
 
 Toda ruta interna pasa por `ruta()` de `src/site.ts`.

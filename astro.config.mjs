@@ -1,11 +1,11 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 
-// Mientras se conecta el dominio de Namecheap, vive en GitHub Pages bajo /el-herbario/.
-// Al conectar el dominio: site = 'https://<dominio>', base = '/', y crear public/CNAME.
-// Las rutas internas usan ruta() de src/site.ts, así que cambiar base no rompe nada.
+// Dominio propio: elherbariobotanico.com (Namecheap). public/CNAME le dice a
+// GitHub Pages cuál es el dominio; www redirige solo. Las rutas internas usan
+// ruta() de src/site.ts, así que cambiar base no rompe nada.
 export default defineConfig({
-  site: 'https://sergiof2u.github.io',
-  base: '/el-herbario/',
+  site: 'https://elherbariobotanico.com',
+  base: '/',
   trailingSlash: 'always',
 });
