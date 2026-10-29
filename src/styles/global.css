@@ -102,15 +102,18 @@ p { margin: 0 0 1em; text-wrap: pretty; }
 .marca__nombre { font-family: var(--serif); font-size: 1.5rem; line-height: 1; display: block; }
 .marca__lema { font-size: .62rem; letter-spacing: .22em; text-transform: uppercase; display: block; margin-top: .3rem; }
 
-.menu { display: flex; align-items: center; gap: 1.6rem; }
+.menu { display: flex; align-items: center; gap: 1.6rem; list-style: none; margin: 0; padding: 0; }
 .menu a { text-decoration: none; font-size: .95rem; }
 .menu a:hover, .menu a[aria-current='page'] { text-decoration: underline; text-underline-offset: .35em; text-decoration-color: var(--pistacho); text-decoration-thickness: 2px; }
+
+.cabecera__acciones { display: flex; align-items: center; gap: .8rem; }
 
 .mi-jardin-enlace {
   display: inline-flex; align-items: center; gap: .45rem;
   text-decoration: none; font-size: .95rem;
-  padding: .5rem .95rem; border-radius: 999px; border: 1.5px solid var(--bosque);
+  min-height: 2.75rem; padding: .4rem .95rem; border-radius: 999px; border: 1.5px solid var(--bosque);
 }
+.mi-jardin-icono { width: 1.35rem; height: 1.35rem; flex: none; display: none; }
 .contador {
   min-width: 1.4rem; height: 1.4rem; padding: 0 .35rem;
   border-radius: 999px; background: var(--pistacho); color: var(--bosque);
@@ -121,25 +124,42 @@ p { margin: 0 0 1em; text-wrap: pretty; }
 .menu-movil { display: none; }
 @media (max-width: 860px) {
   .menu { display: none; }
+  /* En el celular: nombre a la izquierda; Mi jardín y el botón de menú a la derecha. */
+  .cabecera__acciones { gap: .6rem; }
+  .cabecera__acciones nav { order: 2; }
   .menu-movil { display: block; }
   .menu-movil summary {
-    list-style: none; cursor: pointer; padding: .5rem .2rem; font-size: .95rem;
+    list-style: none; cursor: pointer;
+    width: 2.75rem; height: 2.75rem; border-radius: .9rem;
+    display: grid; place-items: center;
+    background: var(--bosque); color: var(--rosado);
   }
   .menu-movil summary::-webkit-details-marker { display: none; }
+  .menu-movil summary svg { width: 1.5rem; height: 1.5rem; }
+  .menu-movil .icono-cerrar, .menu-movil[open] .icono-abrir { display: none; }
+  .menu-movil[open] .icono-cerrar { display: block; }
   .menu-movil[open] .menu {
-    display: flex; flex-direction: column; align-items: flex-start; gap: 1.1rem;
+    display: flex; flex-direction: column; align-items: stretch; gap: 0;
     position: absolute; left: 0; right: 0; top: 100%;
-    background: var(--rosado); padding: 1.5rem 1rem 2rem;
+    background: var(--rosado); padding: .5rem 1rem 1.5rem;
+    border-bottom: 1px solid var(--linea);
+    box-shadow: 0 12px 24px rgb(64 81 58 / .12);
+  }
+  .menu-movil[open] .menu a {
+    display: block; padding: .95rem .25rem; font-size: 1.15rem;
     border-bottom: 1px solid var(--linea);
   }
+  .menu-movil[open] .menu li:last-child a { border-bottom: 0; }
   .marca__lema { display: none; }
   .marca img { width: 2.5rem; height: 2.5rem; }
   .marca__nombre { font-size: 1.3rem; }
   .marca { gap: .55rem; }
-  .cabecera__acciones { gap: .5rem; }
-  .mi-jardin-enlace { padding: .45rem .75rem; }
 }
-.cabecera__acciones { display: flex; align-items: center; gap: .8rem; }
+@media (max-width: 420px) {
+  .mi-jardin-texto { display: none; }
+  .mi-jardin-icono { display: block; }
+  .mi-jardin-enlace { padding: .4rem .7rem; }
+}
 
 /* Portada */
 .portada { display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; padding-block: clamp(2rem, 6vw, 4.5rem); }

@@ -41,14 +41,17 @@ const imagenCompartir = new URL(ruta('fotos/sello.jpg'), Astro.site).href;
         </a>
         <div class="cabecera__acciones">
           <nav aria-label="Principal">
-            <ul class="menu" style="list-style:none;margin:0;padding:0">
+            <ul class="menu">
               {menu.map((m) => (
                 <li><a href={ruta(m.href)} aria-current={pagina === m.href ? 'page' : undefined}>{m.texto}</a></li>
               ))}
             </ul>
             <details class="menu-movil">
-              <summary aria-label="Abrir menú">Menú</summary>
-              <ul class="menu" style="list-style:none;margin:0;padding:0">
+              <summary aria-label="Menú">
+                <svg class="icono-abrir" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
+                <svg class="icono-cerrar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+              </summary>
+              <ul class="menu">
                 <li><a href={ruta()}>Inicio</a></li>
                 {menu.map((m) => (
                   <li><a href={ruta(m.href)} aria-current={pagina === m.href ? 'page' : undefined}>{m.texto}</a></li>
@@ -56,8 +59,13 @@ const imagenCompartir = new URL(ruta('fotos/sello.jpg'), Astro.site).href;
               </ul>
             </details>
           </nav>
-          <a class="mi-jardin-enlace" href={ruta('mi-jardin/')} aria-current={pagina === 'mi-jardin/' ? 'page' : undefined}>
-            Mi jardín <span class="contador" data-contador aria-label="productos en tu jardín">0</span>
+          <a class="mi-jardin-enlace" href={ruta('mi-jardin/')} aria-label="Mi jardín" aria-current={pagina === 'mi-jardin/' ? 'page' : undefined}>
+            <svg class="mi-jardin-icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 11h14l-1.6 9H6.6L5 11Z" />
+              <path d="M12 11V6M12 8c-2.2 0-3.6-1.4-3.6-3.4 2.2 0 3.6 1.4 3.6 3.4ZM12 7c2.2 0 3.6-1.4 3.6-3.4-2.2 0-3.6 1.4-3.6 3.4Z" />
+            </svg>
+            <span class="mi-jardin-texto">Mi jardín</span>
+            <span class="contador" data-contador aria-label="productos en tu jardín">0</span>
           </a>
         </div>
       </div>
